@@ -1,7 +1,5 @@
 # CodeMon - Learn Tech Skills, Collect Pokemon!
 
-![CodeMon Banner](https://via.placeholder.com/800x400?text=CodeMon+-+Learn+Code+Collect+Monsters!)
-
 A mobile-first, gamified learning platform where users earn Pokemon by mastering IT and programming concepts through interactive quizzes and challenges.
 
 ## 🎯 The Concept
