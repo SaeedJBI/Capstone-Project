@@ -84,7 +84,7 @@ A mobile-first, gamified learning platform where users earn Pokemon by mastering
 
 
 
-### What your app does (gamified learning)
+### What the app does (gamified learning)
 
 ### How it works (quiz → rolls → Pokemon collection)
 
