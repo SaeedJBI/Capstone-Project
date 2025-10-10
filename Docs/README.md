@@ -96,7 +96,7 @@ A mobile-first, gamified learning platform where users master tech concepts by "
 
 ## 🗃️ Database Schema
 
-![CodeMon ERD Schema](./media/erd-schema.png)
+![CodeMon ERD Schema](erd-schema.png)
 
 ### Core Tables:
 - **users** - User accounts and roll balances
