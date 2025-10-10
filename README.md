@@ -3,13 +3,13 @@
 A mobile-first, gamified learning platform where users earn Pokemon by mastering IT and programming concepts through interactive quizzes and challenges.
 
 ## 🎯 The Concept
-**Learn → Answer → Collect!** 
-- **Learn**: Study tech concepts through bite-sized lessons
+**Answer → Collect!** 
+
 - **Answer**: Test your knowledge with interactive quizzes  
 - **Collect**: Earn Pokemon based on your quiz performance and progress
 
 ## 🚀 Live Demo
-[Coming Soon - Deployed Link Will Be Here]
+[Deployed Link Will Be Here]
 
 ## 📋 Table of Contents
 - [Features](#features)
@@ -28,7 +28,7 @@ A mobile-first, gamified learning platform where users earn Pokemon by mastering
 - **Roll Mechanics**: Each roll gives you a chance to catch new Pokemon
 - **Rarity System**: Better performance = higher chance of rare Pokemon
 
-### 📚 Learning Content
+### 📚 Quizes Content
 - **Multiple Tech Tracks**: Web Dev, Data Science, Cybersecurity, DevOps
 - **Interactive Quizzes**: Multiple choice, coding challenges, and concept matching
 - **Progressive Curriculum**: From beginner to advanced topics based on the user's main pokemon level
@@ -47,27 +47,27 @@ A mobile-first, gamified learning platform where users earn Pokemon by mastering
 - **HTML5**, **CSS3**, **JavaScript**
 - **Django Templates** with responsive design
 
-## 🎯 Learning Tracks
+## 🎯 Track Categories
 
-### Track 1: Web Development
+###  1: Web Development
 - HTML/CSS Fundamentals
 - JavaScript & DOM Manipulation
 - React/Vue.js Concepts
 - Django Framework
 
-### Track 2: Data Science
+###  2: Data Science
 - Python Basics
 - Pandas & Data Analysis
 - Machine Learning Concepts
 - SQL & Database Fundamentals
 
-### Track 3: DevOps
+###  3: DevOps
 - Linux Basics
 - Containerization (Docker)
 - CI/CD Pipelines
 - Cloud Infrastructure
 
-### Track 4: Cybersecurity
+###  4: Cybersecurity
 - Network Security Basics
 - Cryptography Concepts
 - Security Best Practices
