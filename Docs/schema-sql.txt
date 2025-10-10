@@ -1,4 +1,4 @@
-// CodeMon - Step 3: Add User Track Progress
+// CodeMon
 
 Table users {
   id integer [primary key]
@@ -34,7 +34,6 @@ Table user_pokemon_collection {
   battle_data json
 }
 
-// NEW TABLE: Tracks which tracks users are enrolled in
 Table user_track_progress {
   id integer [primary key]
   user_id integer [not null]
@@ -46,5 +45,5 @@ Table user_track_progress {
 Ref: user_pokemon_collection.user_id > users.id
 Ref: user_pokemon_collection.pokemon_id > tech_pokemon.id
 Ref: tech_pokemon.tech_track_id > tech_tracks.id
-Ref: user_track_progress.user_id > users.id  // NEW
-Ref: user_track_progress.tech_track_id > tech_tracks.id  // NEW
+Ref: user_track_progress.user_id > users.id  
+Ref: user_track_progress.tech_track_id > tech_tracks.id  
