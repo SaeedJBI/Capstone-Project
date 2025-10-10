@@ -1,42 +1,49 @@
+User Flow:
+1. Login → Get daily rolls (if first login of day)
+2. Click "Battle" → Spend 1 roll → Random Pokemon encounter
+3. Answer 5 questions → Immediate scoring
+4. Result:
+   - 80-99%: Pokemon captured (added to collection)
+   - 100%: Pokemon captured + 1 bonus roll
+   - <80%: Nothing happens (roll spent)
+5. Return to main menu, repeat
 
 # User Stories for MVP
 
-## **Phase 1 User Stories - MVP Core**
+Perfect! Here are the **minimum viable user stories** for your CodeMon MVP:
 
-### **🔐 Authentication & Onboarding**
-- **US-001** - As a new user, I can sign up for an account so I can start learning
-- **US-002** - As a user, I can log in to my account so I can access my progress
-- **US-003** - As a user, I can choose my first learning track so I can focus on specific skills
+## **User Stories - CodeMon MVP**
 
-### **📚 Learning Tracks & Enrollment**
-- **US-004** - As a user, I can view available learning tracks so I can see my options
-- **US-005** - As a user, I can enroll in a learning track so I can encounter track-specific Pokemon
+### **Authentication & Onboarding**
+1. **As a new user**, I can create an account with username and password so that I can start learning
+2. **As a returning user**, I can log in to access my Pokemon collection
+3. **As a logged-in user**, I receive 3 free rolls when I first sign up
 
-### **🎮 Pokemon Collection & Display**
-- **US-006** - As a user, I can view my collected Pokemon so I can see my progress
-- **US-007** - As a user, I can view details of a captured Pokemon so I can see its skills and battle history
-- **US-008** - As a user, I can see empty slots for Pokemon I haven't captured yet so I know what to collect
+### **Roll Economy**
+4. **As a user**, I receive 1 free roll when I log in each day
+5. **As a user**, I can see how many rolls I have available on my dashboard
 
-### **⚔️ Basic Battle System**
-- **US-009** - As a user, I can spend one roll to encounter a Pokemon so I can attempt to capture it
-- **US-010** - As a user, I can battle a Pokemon by answering a skill-based quiz so I can prove my knowledge
-- **US-011** - As a user, I can capture a Pokemon if I score 80% or higher so I can add it to my collection
-- **US-012** - As a user, I can see my battle results immediately so I know if I captured the Pokemon
+### **Battle System**
+6. **As a user**, I can spend 1 roll to encounter a random Pokemon
+7. **As a user**, I can battle a Pokemon by answering 5 multiple-choice questions
+8. **As a user**, I see my score immediately after completing a battle
 
-### **💰 Simple Roll Economy**
-- **US-013** - As a user, I receive 3 free rolls when I log in daily so I can battle Pokemon
-- **US-014** - As a user, I can see my current roll balance so I know how many battles I can attempt
-- **US-015** - As a user, I earn one additional roll when I complete a battle so I can continue learning
+### **Capture & Rewards**
+9. **As a user**, I automatically capture a Pokemon if I score 80% or higher in battle
+10. **As a user**, I receive 1 bonus roll if I score 100% in a battle
+11. **As a user**, I lose nothing (except the spent roll) if I score below 80%
 
-### **📝 Fixed Quiz Content**
-- **US-016** - As a user, I answer 5 pre-written questions per battle so the session stays engaging
-- **US-017** - As a user, I see which questions I got right/wrong after each battle so I can learn from mistakes
-- **US-018** - As a user, I see my final score percentage so I know if I captured the Pokemon
+### **Collection & Progress**
+12. **As a user**, I can view all Pokemon I've captured in my collection
+13. **As a user**, I can see each Pokemon's name and capture date in my collection
 
 ---
 
-**Excluded from Phase 1:**
-- AI-generated quizzes
-- Complex roll economy
-- Multiple difficulty levels  
-- Advanced track progression
+## **What's NOT Included (MVP Exclusions):**
+- ❌ AI-generated questions (pre-written questions only)
+- ❌ Multiple tech tracks (single track for MVP)
+- ❌ Pokemon evolution or levels
+- ❌ Social features or leaderboards
+- ❌ Complex progression systems
+- ❌ Track unlocking
+- ❌ Question timers or difficulty levels
