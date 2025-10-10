@@ -1,0 +1,50 @@
+// CodeMon - Step 3: Add User Track Progress
+
+Table users {
+  id integer [primary key]
+  username varchar(50) [not null, unique]
+  password varchar(128) [not null]
+  date_joined datetime [default: `now()`]
+  available_rolls integer [default: 0]
+}
+
+Table tech_tracks {
+  id integer [primary key]
+  name varchar(100) [not null]
+  description text
+  color varchar(20) [default: '#3498db']
+  icon_url varchar(200)
+}
+
+Table tech_pokemon {
+  id integer [primary key]
+  name varchar(100) [not null]
+  tech_track_id integer [not null]
+  skills text [not null]
+  image_url varchar(200)
+  difficulty varchar(1) [default: 'B']
+}
+
+Table user_pokemon_collection {
+  id integer [primary key]
+  user_id integer [not null]
+  pokemon_id integer [not null]
+  captured_date datetime [default: `now()`]
+  capture_score integer
+  battle_data json
+}
+
+// NEW TABLE: Tracks which tracks users are enrolled in
+Table user_track_progress {
+  id integer [primary key]
+  user_id integer [not null]
+  tech_track_id integer [not null]
+  enrolled_date datetime [default: `now()`]
+}
+
+// Relationships
+Ref: user_pokemon_collection.user_id > users.id
+Ref: user_pokemon_collection.pokemon_id > tech_pokemon.id
+Ref: tech_pokemon.tech_track_id > tech_tracks.id
+Ref: user_track_progress.user_id > users.id  // NEW
+Ref: user_track_progress.tech_track_id > tech_tracks.id  // NEW
