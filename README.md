@@ -96,7 +96,7 @@ A mobile-first, gamified learning platform where users master tech concepts by "
 
 ## 🗃️ Database Schema
 
-![CodeMon ERD Schema](media/erd-schema.png)
+![CodeMon ERD Schema](./media/erd-schema.png)
 
 ### Core Tables:
 - **users** - User accounts and roll balances
@@ -140,6 +140,3 @@ python manage.py migrate
 
 # Start development server
 python manage.py runserver
-
-
-git commit -m "Simplifying ERD schema , README updated"
