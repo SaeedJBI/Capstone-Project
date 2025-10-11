@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login - CodeMon{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <div class="auth-container">
+        <div class="auth-header">
+            <h1 class="page-title">Login to CodeMon</h1>
+            <p class="auth-subtitle">Continue your tech learning journey</p>
+        </div>
+
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="id_username" class="form-label">Username</label>
+                <input type="text" name="username" id="id_username" class="form-input" required autofocus>
+            </div>
+            
+            <div class="form-group">
+                <label for="id_password" class="form-label">Password</label>
+                <input type="password" name="password" id="id_password" class="form-input" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>New to CodeMon? <a href="{% url 'signup' %}">Create an account</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

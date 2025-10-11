@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign Up - CodeMon{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <div class="auth-container">
+        <div class="auth-header">
+            <h1 class="page-title">Join CodeMon</h1>
+            <p class="auth-subtitle">Start your tech learning adventure</p>
+        </div>
+
+        {% if error_message %}
+            <div class="alert-error">
+                {{ error_message }}
+            </div>
+        {% endif %}
+
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="id_username" class="form-label">Username</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="form-error">{{ form.username.errors }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_password1" class="form-label">Password</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <div class="form-error">{{ form.password1.errors }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_password2" class="form-label">Confirm Password</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <div class="form-error">{{ form.password2.errors }}</div>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Create Account</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

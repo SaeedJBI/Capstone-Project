@@ -1,11 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}CodeMon - Learn Tech, Collect Pokemon!{% endblock %}</title>
-    {% comment %} <link rel="stylesheet" href="{% static 'css/base.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
+
 <body>
     <nav class="main-nav" aria-label="Main navigation">
         <div class="nav-container">
@@ -13,14 +16,27 @@
             <div class="nav-menu">
                 <a href="{% url 'home' %}" class="nav-link">Home</a>
                 <a href="{% url 'pokemon-list' %}" class="nav-link">All Pokemon</a>
+
+                {% if user.is_authenticated %}
+                <span class="nav-user">Hello, {{ user.username }}!</span>
+                <form method="post" action="{% url 'logout' %}" class="nav-form">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link nav-button">Logout</button>
+                </form>
+                {% else %}
+                <a href="{% url 'login' %}" class="nav-link">Login</a>
+                <a href="{% url 'signup' %}" class="nav-link">Sign Up</a>
+                {% endif %}
+
             </div>
         </div>
     </nav>
-    
+
     <main class="main-content" role="main">
         {% block content %}
-        
+
         {% endblock %}
     </main>
 </body>
+
 </html>

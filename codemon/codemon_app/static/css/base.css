@@ -1,0 +1,300 @@
+/* MOBILE FIRST STYLES */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --text-color: #333;
+    --background-color: #f8f9fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Navigation - Mobile First */
+.main-nav {
+    background: var(--secondary-color);
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+/* Main Content */
+.main-content {
+    min-height: calc(100vh - 80px);
+}
+
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Pokemon Grid - Mobile First */
+.pokemon-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr; /* 1 column on mobile */
+}
+
+.pokemon-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pokemon-card__image {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.placeholder-img {
+    font-size: 3rem;
+    background: #eee;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.pokemon-card__name {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.pokemon-card__skills, 
+.pokemon-card__difficulty {
+    margin-bottom: 0.5rem;
+}
+
+.label {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.difficulty-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.difficulty-b { background: #d4edda; color: #155724; }
+.difficulty-i { background: #fff3cd; color: #856404; }
+.difficulty-a { background: #f8d7da; color: #721c24; }
+
+/* TABLET STYLES */
+@media (min-width: 768px) {
+    .pokemon-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+    }
+    
+    .page-container {
+        padding: 2rem;
+    }
+}
+
+/* DESKTOP STYLES */
+@media (min-width: 1024px) {
+    .pokemon-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+    }
+}
+
+
+
+
+/* Authentication Styles */
+.auth-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-subtitle {
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.auth-form {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.auth-footer {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e1e5e9;
+}
+
+.auth-link {
+    color: #666;
+}
+
+.auth-link__anchor {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-link__anchor:hover {
+    text-decoration: underline;
+}
+
+/* Form Error Styles */
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.form-error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Style Django form inputs */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Navigation User Styles */
+.nav-user {
+    color: white;
+    padding: 0.5rem;
+}
+
+.nav-form {
+    display: inline;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: inherit;
+    padding: 0.5rem;
+}
+
+.nav-button:hover {
+    text-decoration: underline;
+}
+
+/* Mobile navigation adjustments */
+@media (max-width: 768px) {
+    .nav-user {
+        display: none; /* Hide username on mobile to save space */
+    }
+    
+    .nav-menu {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
