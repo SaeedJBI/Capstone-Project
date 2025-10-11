@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CodeMon - Learn Tech, Collect Pokemon!{% endblock %}</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/base.css' %}"> {% endcomment %}
+</head>
+<body>
+    <nav class="main-nav" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="nav-brand">CodeMon</a>
+            <div class="nav-menu">
+                <a href="{% url 'home' %}" class="nav-link">Home</a>
+                <a href="{% url 'pokemon-list' %}" class="nav-link">All Pokemon</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="main-content" role="main">
+        {% block content %}
+        
+        {% endblock %}
+    </main>
+</body>
+</html>
