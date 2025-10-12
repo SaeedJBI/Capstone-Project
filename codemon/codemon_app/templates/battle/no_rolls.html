@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-container">
+    <div class="empty-state">
+        <div class="empty-state__icon">🎲</div>
+        <h1 class="empty-state__title">No Rolls Remaining!</h1>
+        <div class="empty-state__content">
+            <p>You need rolls to encounter Codemon.</p>
+            <p>Come back tomorrow for your daily roll bonus!</p>
+        </div>
+        <div class="empty-state__actions">
+            <a href="{% url 'codemon-list' %}" class="btn btn-primary">View Codemon Catalog</a>
+            <a href="{% url 'home' %}" class="btn btn-secondary">Go Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
