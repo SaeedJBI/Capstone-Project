@@ -1,39 +1,42 @@
 {% extends 'base.html' %}
-{% load static %}  <!-- ADD THIS LINE -->
+{% load static %}
 
 {% block content %}
 <div class="page-container">
     <header class="page-header">
-        <h1 class="page-title">All Tech Pokemon</h1>
+        <h1 class="page-title">Tech Pokemon Catalog</h1>
+        <p class="page-subtitle">Battle these Pokemon to learn tech skills!</p>
     </header>
-    
+
     <div class="pokemon-grid">
         {% for pokemon in pokemons %}
         <article class="pokemon-card">
             <div class="pokemon-card__image">
                 {% if pokemon.image_url %}
-                    <!-- CHANGE THIS LINE -->
-                    <img src="{% static pokemon.image_url %}" alt="{{ pokemon.name }}" class="pokemon-img">
+                <img src="{% static pokemon.image_url %}" alt="{{ pokemon.name }}" class="pokemon-img">
                 {% else %}
-                    <div class="placeholder-img">
-                        🐉
-                    </div>
+                <div class="placeholder-img" aria-label="No image available">
+                    🐉
+                </div>
                 {% endif %}
             </div>
-            
+
             <header class="pokemon-card__header">
                 <h2 class="pokemon-card__name">{{ pokemon.name }}</h2>
+                <span class="track-badge" style="background-color: {{ pokemon.tech_track.color }}">
+                    {{ pokemon.tech_track.name }}
+                </span>
             </header>
-            
+
             <div class="pokemon-card__content">
                 <p class="pokemon-card__skills">
-                    <span class="label">Skills:</span> 
+                    <span class="label">Skills:</span>
                     {{ pokemon.skills }}
                 </p>
                 <p class="pokemon-card__difficulty">
-                    <span class="label">Level:</span> 
+                    <span class="label">Level:</span>
                     <span class="difficulty-badge difficulty-{{ pokemon.difficulty|lower }}">
-                        {{ pokemon.difficulty }}
+                        {{ pokemon.get_difficulty_display }}
                     </span>
                 </p>
             </div>
