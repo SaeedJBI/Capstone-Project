@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-container">
+    <div class="empty-state">
+        <h1>Battle System Coming Soon!</h1>
+        <p>{{ message }}</p>
+        <a href="{% url 'battle-encounter' %}" class="btn btn-primary">Encounter Another Codemon</a>
+        <a href="{% url 'codemon-list' %}" class="btn btn-secondary">View All Codemon</a>
+    </div>
+</div>
+{% endblock %}

@@ -329,3 +329,14 @@ input[type="password"]:focus {
     /* CRITICAL: Maintains the image's aspect ratio to prevent distortion */
     height: auto; 
 }
+
+/* Skill Tag Styles */
+.skill-tag {
+    display: inline-block;
+    background: #e9ecef;
+    color: #495057;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    margin: 0.1rem;
+}

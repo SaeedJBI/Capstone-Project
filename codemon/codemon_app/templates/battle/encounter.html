@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Encounter {{ codemon.name }} - CodeMon{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <div class="encounter-container">
+        <header class="encounter-header">
+            <h1 class="page-title">You encountered {{ codemon.name }}!</h1>
+            <p class="rolls-remaining">Rolls left: <strong>{{ rolls_remaining }}</strong></p>
+        </header>
+
+        <div class="codemon-display">
+            <div class="codemon-image">
+                {% if codemon.image_url %}
+                    <img src="{{ codemon.image_url }}" alt="{{ codemon.name }}" class="codemon-img">
+                {% else %}
+                    <div class="placeholder-img">🐉</div>
+                {% endif %}
+            </div>
+            
+            <div class="codemon-info">
+                <h2 class="codemon-name">{{ codemon.name }}</h2>
+                <div class="codemon-track">
+                    <span class="track-badge" style="background-color: {{ codemon.tech_track.color }}">
+                        {{ codemon.tech_track.name }}
+                    </span>
+                </div>
+                <div class="codemon-skills">
+                    <span class="label">Skills:</span>
+                    <div class="skills-list">
+                        {% for skill in codemon.skills.all %}
+                            <span class="skill-tag">{{ skill.name }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="codemon-difficulty">
+                    <span class="label">Level:</span>
+                    <span class="difficulty-badge difficulty-{{ codemon.difficulty|lower }}">
+                        {{ codemon.get_difficulty_display }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="encounter-actions">
+            <a href="{% url 'battle-start' codemon.id %}" class="btn btn-primary btn-large">Start Battle!</a>
+            <a href="{% url 'codemon-list' %}" class="btn btn-secondary">Run Away</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

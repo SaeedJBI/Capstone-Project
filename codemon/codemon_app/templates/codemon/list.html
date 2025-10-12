@@ -31,7 +31,9 @@
             <div class="codemon-card__content">
                 <p class="codemon-card__skills">
                     <span class="label">Skills:</span>
-                    {{ codemon.skills }}
+                    {% for skill in codemon.skills.all %}
+                    <span class="skill-tag">{{ skill.name }}</span>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
                 </p>
                 <p class="codemon-card__difficulty">
                     <span class="label">Level:</span>
