@@ -127,6 +127,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Authentication Settings
-LOGIN_REDIRECT_URL = 'pokemon-list'
+LOGIN_REDIRECT_URL = 'codemon-list'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'

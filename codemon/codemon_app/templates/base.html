@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}CodeMon - Learn Tech, Collect Pokemon!{% endblock %}</title>
+    <title>{% block title %}CodeMon - Learn Tech, Collect codemon!{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 
@@ -15,7 +15,7 @@
             <a href="{% url 'home' %}" class="nav-brand">CodeMon</a>
             <div class="nav-menu">
                 <a href="{% url 'home' %}" class="nav-link">Home</a>
-                <a href="{% url 'pokemon-list' %}" class="nav-link">All Pokemon</a>
+                <a href="{% url 'codemon-list' %}" class="nav-link">All codemon</a>
 
                 {% if user.is_authenticated %}
                 <span class="nav-user">Hello, {{ user.username }}!</span>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import TechPokemon
+from .models import TechCodemon
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
@@ -7,9 +7,9 @@ from django.contrib.auth.forms import UserCreationForm
 def home(request):
     return render(request, 'home.html')
 
-def pokemon_list(request):
-    pokemons = TechPokemon.objects.all()
-    return render(request, 'pokemon/list.html', {'pokemons': pokemons})
+def codemon_list(request):
+    codemons = TechCodemon.objects.all()
+    return render(request, 'codemon/list.html', {'codemons': codemons})
 
 
 def signup(request):
@@ -19,7 +19,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('pokemon-list')
+            return redirect('codemon-list')
         else:
             error_message = 'Invalid sign up - try again'
     form = UserCreationForm()

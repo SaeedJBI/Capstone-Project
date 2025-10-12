@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="page-container">
+    <header class="page-header">
+        <h1 class="page-title">Tech codemon Catalog</h1>
+        <p class="page-subtitle">Battle these codemon to learn tech skills!</p>
+    </header>
+
+    <div class="codemon-grid">
+        {% for codemon in codemons %}
+        <article class="codemon-card">
+            <div class="codemon-card__image">
+                {% if codemon.image_url %}
+                <img src="{% static codemon.image_url %}" alt="{{ codemon.name }}" class="codemon-img">
+                {% else %}
+                <div class="placeholder-img" aria-label="No image available">
+                    🐉
+                </div>
+                {% endif %}
+            </div>
+
+            <header class="codemon-card__header">
+                <h2 class="codemon-card__name">{{ codemon.name }}</h2>
+                <span class="track-badge" style="background-color: {{ codemon.tech_track.color }}">
+                    {{ codemon.tech_track.name }}
+                </span>
+            </header>
+
+            <div class="codemon-card__content">
+                <p class="codemon-card__skills">
+                    <span class="label">Skills:</span>
+                    {{ codemon.skills }}
+                </p>
+                <p class="codemon-card__difficulty">
+                    <span class="label">Level:</span>
+                    <span class="difficulty-badge difficulty-{{ codemon.difficulty|lower }}">
+                        {{ codemon.get_difficulty_display }}
+                    </span>
+                </p>
+            </div>
+        </article>
+        {% empty %}
+        <div class="empty-state">
+            <p>No codemon available yet!</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

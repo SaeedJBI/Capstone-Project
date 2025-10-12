@@ -63,21 +63,21 @@ body {
     padding: 1rem;
 }
 
-/* Pokemon Grid - Mobile First */
-.pokemon-grid {
+/* codemon Grid - Mobile First */
+.codemon-grid {
     display: grid;
     gap: 1rem;
     grid-template-columns: 1fr; /* 1 column on mobile */
 }
 
-.pokemon-card {
+.codemon-card {
     background: white;
     border-radius: 8px;
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.pokemon-card__image {
+.codemon-card__image {
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -89,13 +89,13 @@ body {
     padding: 1rem;
 }
 
-.pokemon-card__name {
+.codemon-card__name {
     color: var(--secondary-color);
     margin-bottom: 0.5rem;
 }
 
-.pokemon-card__skills, 
-.pokemon-card__difficulty {
+.codemon-card__skills, 
+.codemon-card__difficulty {
     margin-bottom: 0.5rem;
 }
 
@@ -117,7 +117,7 @@ body {
 
 /* TABLET STYLES */
 @media (min-width: 768px) {
-    .pokemon-grid {
+    .codemon-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
     }
     
@@ -128,7 +128,7 @@ body {
 
 /* DESKTOP STYLES */
 @media (min-width: 1024px) {
-    .pokemon-grid {
+    .codemon-grid {
         grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
     }
 }
@@ -310,14 +310,22 @@ input[type="password"]:focus {
     margin-left: 0.5rem;
 }
 
-.pokemon-card__header {
+.codemon-card__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1rem;
 }
 
-.pokemon-card__name {
+.codemon-card__name {
     margin: 0;
     color: var(--secondary-color);
+}
+
+.codemon-img {
+    /* CRITICAL: Ensures the image scales down to fit its container */
+    max-width: 100%; 
+    
+    /* CRITICAL: Maintains the image's aspect ratio to prevent distortion */
+    height: auto; 
 }
