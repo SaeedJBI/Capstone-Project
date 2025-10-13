@@ -8,4 +8,5 @@ urlpatterns = [
     path('battle/encounter/', views.encounter_codemon, name='battle-encounter'),
     path('battle/start/<int:codemon_id>/', views.battle_start, name='battle-start'),
     path('battle/submit/<int:codemon_id>/', views.battle_submit, name='battle-submit'),
+    path('collection/', views.my_collection, name='my-collection'),
 ]

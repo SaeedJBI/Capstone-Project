@@ -132,3 +132,11 @@ def battle_submit(request, codemon_id):
         'captured': captured,
         'bonus_roll': bonus_roll
     })
+
+@login_required
+def my_collection(request):
+    user_collection = UserCodemonCollection.objects.filter(user=request.user)
+    
+    return render(request, 'collection/collection.html', {
+        'collection': user_collection
+    })

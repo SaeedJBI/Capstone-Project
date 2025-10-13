@@ -14,7 +14,7 @@
         <div class="codemon-display">
             <div class="codemon-image">
                 {% if codemon.image_url %}
-                    <img src="{{ codemon.image_url }}" alt="{{ codemon.name }}" class="codemon-img">
+                    <img src="{% static codemon.image_url %}" alt="{{ codemon.name }}" class="codemon-img">
                 {% else %}
                     <div class="placeholder-img">🐉</div>
                 {% endif %}
