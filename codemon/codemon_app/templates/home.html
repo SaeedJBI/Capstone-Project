@@ -1,10 +1,50 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="page-container">
     <div class="welcome-content">
         <h1 class="page-title">Welcome to CodeMon!</h1>
         <p class="page-subtitle">Battle codemon to learn tech skills!</p>
+
+        {% if user.is_authenticated %}
+        <div class="user-dashboard">
+            <div class="stats-card">
+                <h3 class="stats-card__title"> Hello, {{ user.username }}!</h3>
+                <p class="stats-card__rolls">Rolls available: <strong>{{ user.userprofile.available_rolls }}</strong></p>
+
+                {% if user.userprofile.can_claim_daily_bonus %}
+                <form method="post" action="{% url 'claim-daily-bonus' %}" class="bonus-form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success btn-large"> Claim Daily Bonus (+1 Roll)</button>
+                </form>
+                {% else %}
+                <p class="bonus-message"> Daily bonus already claimed today</p>
+                {% endif %}
+            </div>
+
+            {% if bonus_message %}
+            <div class="alert {% if bonus_success %}alert-success{% else %}alert-warning{% endif %}">
+                {{ bonus_message }}
+            </div>
+            {% endif %}
+
+            <div class="dashboard-actions">
+                <a href="{% url 'battle-encounter' %}" class="btn btn-primary">Battle Codemon</a>
+                <a href="{% url 'my-collection' %}" class="btn btn-secondary">My Collection</a>
+                <a href="{% url 'codemon-list' %}" class="btn btn-secondary">View All Codemon</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="guest-content">
+            <p class="guest-message">Your personal tech learning adventure starts here!</p>
+            <div class="guest-actions">
+                <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+                <a href="{% url 'signup' %}" class="btn btn-secondary">Sign Up</a>
+            </div>
+        </div>
+        {% endif %}
     </div>
+</div>
 </div>
 {% endblock %}

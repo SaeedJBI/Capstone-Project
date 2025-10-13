@@ -140,3 +140,23 @@ def my_collection(request):
     return render(request, 'collection/collection.html', {
         'collection': user_collection
     })
+
+@login_required
+def claim_daily_bonus(request):
+    user_profile = request.user.userprofile
+    
+    if user_profile.can_claim_daily_bonus():
+        from django.utils import timezone
+        user_profile.available_rolls += 1
+        user_profile.last_daily_roll = timezone.now().date()
+        user_profile.save()
+        message = "Daily bonus claimed! +1 roll"
+        success = True
+    else:
+        message = "You've already claimed your daily bonus today"
+        success = False
+    
+    return render(request, 'home.html', {
+        'bonus_message': message,
+        'bonus_success': success
+    })

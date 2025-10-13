@@ -43,6 +43,13 @@ class UserProfile(models.Model):
     
     def __str__(self):
         return f"{self.user.username}'s profile"
+    
+    def can_claim_daily_bonus(self):
+        from django.utils import timezone
+        today = timezone.now().date()
+        return self.last_daily_roll != today
+    
+    
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
