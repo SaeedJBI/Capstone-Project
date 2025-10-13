@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Battle Results - CodeMon{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <div class="results-container">
+        <header class="results-header">
+            <h1 class="page-title">Battle Results</h1>
+            
+            <div class="results-codemon">
+                <div class="results-codemon__image">
+                    {% if codemon.image_url %}
+                        <img src="{{ codemon.image_url }}" alt="{{ codemon.name }}" class="codemon-img">
+                    {% else %}
+                        <div class="placeholder-img">🐉</div>
+                    {% endif %}
+                </div>
+                <div class="results-codemon__info">
+                    <h2 class="codemon-name">{{ codemon.name }}</h2>
+                    <div class="results-codemon__track">
+                        <span class="track-badge" style="background-color: {{ codemon.tech_track.color }}">
+                            {{ codemon.tech_track.name }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="score-display">
+            <div class="score-circle {% if captured %}score-success{% else %}score-fail{% endif %}">
+                <span class="score-circle__percentage">{{ score_percentage|floatformat:0 }}%</span>
+                <span class="score-circle__detail">{{ correct_answers }}/{{ total_questions }} correct</span>
+            </div>
+        </div>
+
+        <div class="results-message">
+            {% if captured %}
+                <div class="results-message__success">
+                    <h3 class="results-message__title"> Congratulations! You captured {{ codemon.name }}!</h3>
+                    <p class="results-message__text">This Codemon has been added to your collection.</p>
+                    {% if bonus_roll %}
+                        <p class="results-message__bonus"> Perfect score! You earned a bonus roll!</p>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="results-message__fail">
+                    <h3 class="results-message__title"> Battle Lost!</h3>
+                    <p class="results-message__text">You need at least 80% to capture {{ codemon.name }}.</p>
+                    <p class="results-message__text">Study the skills and try again!</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="results-actions">
+            <a href="{% url 'battle-encounter' %}" class="btn btn-primary">Battle Another Codemon</a>
+            <a href="{% url 'codemon-list' %}" class="btn btn-secondary">View All Codemon</a>
+            {% if captured %}
+                <a href="#" class="btn btn-success">View My Collection</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -427,3 +427,116 @@ input[type="password"]:focus {
         padding: 0.75rem;
     }
 }
+
+/* Battle Results Styles */
+.results-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.results-header {
+    margin-bottom: 2rem;
+}
+
+.score-display {
+    margin: 2rem 0;
+}
+
+.score-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: 6px solid;
+    font-weight: bold;
+}
+
+.score-success {
+    background: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.score-fail {
+    background: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+.score-percentage {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.score-detail {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.results-message {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.success-message {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.fail-message {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.bonus-message {
+    font-weight: bold;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #c3e6cb;
+}
+
+.results-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+}
+
+/* Mobile results styles */
+@media (max-width: 768px) {
+    .score-circle {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .score-percentage {
+        font-size: 1.5rem;
+    }
+    
+    .results-actions {
+        flex-direction: column;
+    }
+    
+    .results-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

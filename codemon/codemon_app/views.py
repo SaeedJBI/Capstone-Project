@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import TechCodemon, QuizQuestion
+from .models import TechCodemon, QuizQuestion, UserCodemonCollection
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -82,7 +82,53 @@ def battle_start(request, codemon_id):
 
 @login_required
 def battle_submit(request, codemon_id):
-    # Temporary placeholder 
-    return render(request, 'battle/placeholder.html', {
-        'message': f'Battle submission coming soon! Codemon ID: {codemon_id}'
+    if request.method != 'POST':
+        return redirect('battle-encounter')
+    
+    codemon = TechCodemon.objects.get(id=codemon_id)
+    user = request.user
+    
+    total_questions = 0
+    correct_answers = 0
+    
+    for key, user_answer in request.POST.items():
+        if key.startswith('question_'):
+            total_questions += 1
+            question_id = key.replace('question_', '')
+            question = QuizQuestion.objects.get(id=question_id)
+            
+            if user_answer == question.correct_answer:
+                correct_answers += 1
+    
+    score_percentage = (correct_answers / total_questions) * 100 if total_questions > 0 else 0
+    
+    captured = False
+    bonus_roll = False
+    
+    if score_percentage >= 80:
+        captured = True
+        existing_collection = UserCodemonCollection.objects.filter(
+            user=user, 
+            codemon=codemon
+        ).first()
+        
+        if not existing_collection:
+            UserCodemonCollection.objects.create(
+                user=user,
+                codemon=codemon,
+                capture_score=score_percentage
+            )
+        
+        if score_percentage == 100:
+            bonus_roll = True
+            user.userprofile.available_rolls += 1
+            user.userprofile.save()
+    
+    return render(request, 'battle/results.html', {
+        'codemon': codemon,
+        'score_percentage': score_percentage,
+        'correct_answers': correct_answers,
+        'total_questions': total_questions,
+        'captured': captured,
+        'bonus_roll': bonus_roll
     })
