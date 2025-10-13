@@ -340,3 +340,90 @@ input[type="password"]:focus {
     font-size: 0.875rem;
     margin: 0.1rem;
 }
+
+/* Battle Styles */
+.battle-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.battle-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.battle-codemon-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+.questions-container {
+    margin-bottom: 2rem;
+}
+
+.question-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.question-text {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.answers-grid {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.answer-option {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.answer-option:hover {
+    border-color: var(--primary-color);
+    background: #f8f9fa;
+}
+
+.answer-option input[type="radio"] {
+    margin-right: 1rem;
+}
+
+.answer-text {
+    flex: 1;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+/* Mobile battle styles */
+@media (max-width: 768px) {
+    .battle-codemon-img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .question-card {
+        padding: 1rem;
+    }
+    
+    .answer-option {
+        padding: 0.75rem;
+    }
+}

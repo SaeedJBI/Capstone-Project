@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import TechCodemon
+from .models import TechCodemon, QuizQuestion
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -48,7 +48,41 @@ def encounter_codemon(request):
 
 @login_required
 def battle_start(request, codemon_id):
-    # will build it later ...
+    
+    codemon = TechCodemon.objects.get(id=codemon_id)
+    
+    codemon_skills = codemon.skills.all()
+    questions = QuizQuestion.objects.filter(
+        skills__in=codemon_skills,
+        difficulty=codemon.difficulty
+    ).distinct()[:5]
+    
+    if questions.count() < 5:
+        additional_questions = QuizQuestion.objects.filter(
+            skills__in=codemon_skills
+        ).exclude(id__in=[q.id for q in questions]).distinct()[:5-questions.count()]
+        questions = list(questions) + list(additional_questions)
+    
+    battle_questions = []
+    for question in questions:
+        answers = [
+            question.correct_answer,
+            question.wrong_answer1,
+            question.wrong_answer2,
+            question.wrong_answer3
+        ]
+        random.shuffle(answers)
+        battle_questions.append({
+            'question': question,
+            'answers': answers,
+            'correct_answer': question.correct_answer
+        })
+
+    return render(request, 'battle/battle.html', {'codemon': codemon, 'questions': battle_questions})
+
+@login_required
+def battle_submit(request, codemon_id):
+    # Temporary placeholder 
     return render(request, 'battle/placeholder.html', {
-        'message': f'Battle system coming soon! Codemon ID: {codemon_id}'
+        'message': f'Battle submission coming soon! Codemon ID: {codemon_id}'
     })

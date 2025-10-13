@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Battle {{ codemon.name }} - CodeMon{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <div class="battle-container">
+        <header class="battle-header">
+            <h1 class="page-title">Battle {{ codemon.name }}!</h1>
+            <div class="battle-codemon">
+                <div class="battle-codemon__image">
+                    {% if codemon.image_url %}
+                        <img src="{{ codemon.image_url }}" alt="{{ codemon.name }}" class="codemon-img">
+                    {% else %}
+                        <div class="placeholder-img">🐉</div>
+                    {% endif %}
+                </div>
+                <div class="battle-codemon__info">
+                    <h2 class="codemon-name">{{ codemon.name }}</h2>
+                    <div class="battle-codemon__skills">
+                        <span class="label">Skills tested:</span>
+                        <div class="skills-list">
+                            {% for skill in codemon.skills.all %}
+                                <span class="skill-tag">{{ skill.name }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <form method="post" action="{% url 'battle-submit' codemon.id %}" class="battle-form">
+            {% csrf_token %}
+            
+            <div class="questions-container">
+                {% for question_data in questions %}
+                <div class="question-card">
+                    <h3 class="question-card__title">Question {{ forloop.counter }}</h3>
+                    <p class="question-card__text">{{ question_data.question.question_text }}</p>
+                    
+                    <div class="answers-list">
+                        {% for answer in question_data.answers %}
+                        <label class="answer-option">
+                            <input type="radio" name="question_{{ question_data.question.id }}" value="{{ answer }}" required>
+                            <span class="answer-option__text">{{ answer }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="battle-actions">
+                <button type="submit" class="btn btn-primary btn-large">Submit Answers</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
