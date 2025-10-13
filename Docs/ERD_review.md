@@ -1,29 +1,29 @@
-CodeMon ERD Critical Review
-✅ STRENGTHS
-Scalability:
-Normalized skills - No skill duplication across Codemon/questions
+# CodeMon ERD Critical Review
+## ✅ STRENGTHS
+**Scalability:**
+- Normalized skills - No skill duplication across Codemon/questions
 
-Many-to-Many relationships - Can scale to thousands of Codemon and questions
+- Many-to-Many relationships - Can scale to thousands of Codemon and questions
 
-Separate join tables - Efficient querying for skill-based filtering
+- Separate join tables - Efficient querying for skill-based filtering
 
-Data Integrity:
-Foreign key constraints - Prevents orphaned records
+**Data Integrity:**
+- Foreign key constraints - Prevents orphaned records
 
-Unique constraints - Prevents duplicate user collections
+- Unique constraints - Prevents duplicate user collections
 
-Cascade deletes - Maintains referential integrity
+- Cascade deletes - Maintains referential integrity
 
-Extensibility:
-Skill-based architecture - Easy to add new tech domains
+**Extensibility:**
+- Skill-based architecture - Easy to add new tech domains
 
-Track system - Can add unlimited learning paths
+- Track system - Can add unlimited learning paths
 
-Collection metadata - Ready for achievements, stats, leaderboards
+- Collection metadata - Ready for achievements, stats, leaderboards
 
-🚨 CRITICAL ISSUES & IMPROVEMENTS
-1. Missing Critical Constraints
-sql
+## 🚨 CRITICAL ISSUES & IMPROVEMENTS
+### 1. Missing Critical Constraints
+```sql
 -- MISSING: Prevent duplicate skills
 ALTER TABLE techskills ADD CONSTRAINT unique_skill_name UNIQUE (name);
 
@@ -38,8 +38,9 @@ CHECK (difficulty IN ('B', 'I', 'A'));
 -- MISSING: Valid score range
 ALTER TABLE usercodemoncollection ADD CONSTRAINT valid_capture_score 
 CHECK (capture_score >= 0 AND capture_score <= 100);
-2. Performance Bottlenecks
-sql
+```
+### 2. Performance Bottlenecks
+```sql
 -- PROBLEM: No indexes on frequently queried fields
 -- Users will battle constantly - these need indexes:
 
@@ -49,8 +50,9 @@ CREATE INDEX idx_collection_user_codemon ON usercodemoncollection(user_id, codem
 CREATE INDEX idx_userprofile_last_roll ON userprofiles(last_daily_roll);
 CREATE INDEX idx_codemon_skills_skill ON techcodemon_skills(techskill_id);
 CREATE INDEX idx_questions_skills_skill ON quizquestions_skills(techskill_id);
-3. Missing Audit & Analytics Data
-sql
+```
+### 3. Missing Audit & Analytics Data
+```sql
 -- PROBLEM: Can't track user behavior or balance game
 -- MISSING TABLES:
 
@@ -76,8 +78,9 @@ Table user_activity {
   
   Ref: user_id > users.id
 }
-4. Limited Game Balance Controls
-sql
+```
+### 4. Limited Game Balance Controls
+```sql
 -- PROBLEM: No way to control game economy without code changes
 -- MISSING:
 
@@ -94,8 +97,9 @@ Table game_config {
 -- capture_threshold = 80
 -- max_roll_cap = 10
 -- battle_questions_count = 5
-5. Scalability Issues for Large User Base
-sql
+```
+### 5. Scalability Issues for Large User Base
+```sql
 -- PROBLEM: UserCodemonCollection will grow exponentially
 -- SOLUTION: Add archiving and partitioning:
 
@@ -111,52 +115,53 @@ Table archived_collections {
 
 -- Partition by user_id ranges for large scale
 -- Consider read replicas for analytics queries
-🔧 CRITICAL FIXES NEEDED
-Immediate (Before Production):
-Add unique constraints on skill names and Codemon names
+```
+## 🔧 CRITICAL FIXES NEEDED
+### Immediate (Before Production):
+- Add unique constraints on skill names and Codemon names
 
-Add database indexes on all foreign keys and frequently queried fields
+- Add database indexes on all foreign keys and frequently queried fields
 
-Add check constraints for difficulty levels and valid scores (0-100)
+- Add check constraints for difficulty levels and valid scores (0-100)
 
-Short-term (Next Release):
-Battle session logging - Essential for balancing questions
+### Short-term (Next Release):
+- Battle session logging - Essential for balancing questions
 
-Game configuration table - So you can tweak numbers without code changes
+- Game configuration table - So you can tweak numbers without code changes
 
-User activity tracking - Understand how users actually play
+- User activity tracking - Understand how users actually play
 
-Long-term (Scale Preparation):
-Collection archiving strategy
+### Long-term (Scale Preparation):
+- Collection archiving strategy
 
-Database partitioning plan
+- Database partitioning plan
 
-Read replicas for analytics
+- Read replicas for analytics
 
-📊 MISSING BUSINESS INTELLIGENCE
-You can't answer these critical questions:
+## 📊 MISSING BUSINESS INTELLIGENCE
+**You can't answer these critical questions:**
 
-"Which Codemon are too hard/easy to capture?"
+- "Which Codemon are too hard/easy to capture?"
 
-"Which questions are too difficult?"
+- "Which questions are too difficult?"
 
-"What's the average battle duration?"
+- "What's the average battle duration?"
 
-"How often do users claim daily bonuses?"
+- "How often do users claim daily bonuses?"
 
-"Which tech tracks are most popular?"
+- "Which tech tracks are most popular?"
 
-"What's the user retention rate?"
+- "What's the user retention rate?"
 
-"Which skills need more question coverage?"
+- "Which skills need more question coverage?"
 
-🎯 RECOMMENDATION PRIORITY
-Fix these in this order:
+## 🎯 RECOMMENDATION PRIORITY
+**Fix these in this order:**
 
-Add constraints and indexes (data integrity & performance)
+- Add constraints and indexes (data integrity & performance)
 
-Add battle session logging (game balancing)
+- Add battle session logging (game balancing)
 
-Add game configuration table (tweak without deployments)
+- Add game configuration table (tweak without deployments)
 
-Add basic analytics (understand player behavior)
+- Add basic analytics (understand player behavior)
