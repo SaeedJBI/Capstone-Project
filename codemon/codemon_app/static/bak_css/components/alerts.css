@@ -1,0 +1,31 @@
+/* ===== ALERT COMPONENTS ===== */
+.alert {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid transparent;
+}
+
+.alert-success {
+    background: #f0fdf4;
+    border-color: #22c55e;
+    color: #166534;
+}
+
+.alert-warning {
+    background: #fffbeb;
+    border-color: #f59e0b;
+    color: #92400e;
+}
+
+.alert-error {
+    background: #fef2f2;
+    border-color: #ef4444;
+    color: #991b1b;
+}
+
+.bonus-message {
+    color: #6b7280;
+    font-style: italic;
+    margin: 0.5rem 0;
+}

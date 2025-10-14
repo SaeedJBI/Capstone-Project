@@ -1,0 +1,48 @@
+/* static/css/pages/collection.css */
+/* ===== COLLECTION PAGE SPECIFIC STYLES ===== */
+
+.collection-grid {
+    margin-top: 2rem;
+}
+
+/* Collection-specific card enhancements */
+.collection-card {
+    position: relative;
+}
+
+.collection-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #8b5cf6, #3b82f6, #10b981);
+    border-radius: 1rem 1rem 0 0;
+}
+
+/* Collection stats in header */
+.page-subtitle {
+    font-size: 1.125rem;
+}
+
+.page-subtitle strong {
+    color: #111827;
+    font-weight: 700;
+}
+
+/* ===== RESPONSIVE COLLECTION ===== */
+
+/* Tablet */
+@media (min-width: 768px) {
+    .collection-grid {
+        margin-top: 2.5rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .collection-grid {
+        margin-top: 3rem;
+    }
+}

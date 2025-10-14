@@ -1,0 +1,264 @@
+/* static/css/components/cards.css */
+/* ===== MOBILE-FIRST CARD SYSTEM ===== */
+
+/* Grid Layouts */
+.codemon-grid,
+.collection-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Base Card Styles */
+.codemon-card,
+.collection-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.codemon-card:hover,
+.collection-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Image Sections */
+.codemon-card__image,
+.collection-card__image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #f3f4f6;
+}
+
+.codemon-card__image img,
+.collection-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.codemon-card:hover .codemon-card__image img,
+.collection-card:hover .collection-card__image img {
+    transform: scale(1.05);
+}
+
+/* Card Headers */
+.codemon-card__header,
+.collection-card__header {
+    padding: 1.5rem 1.5rem 0.5rem;
+    gap: 0.75rem;
+    text-align: center;
+}
+
+.codemon-card__name,
+.collection-card__name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Card Content */
+.codemon-card__content,
+.collection-card__content {
+    padding: 0 1.5rem 1.5rem;
+}
+
+.codemon-card__skills,
+.collection-card__skills {
+    margin-bottom: 1rem;
+}
+
+.codemon-card__meta,
+.collection-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.codemon-card__captured,
+.codemon-card__score,
+.collection-card__captured,
+.collection-card__score {
+    font-size: 0.875rem;
+    color: #6b7280;
+    display: flex;
+    justify-content: space-between;
+}
+
+.codemon-card__captured .label,
+.codemon-card__score .label,
+.collection-card__captured .label,
+.collection-card__score .label {
+    font-size: 0.75rem;
+}
+
+/* Stats Card (Dashboard) */
+.stats-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.stats-card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.stats-card__rolls {
+    font-size: 1.125rem;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.stats-card__rolls strong {
+    color: #111827;
+    font-size: 1.25rem;
+}
+
+/* Question Cards */
+.question-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    margin-bottom: 1.5rem;
+}
+
+.question-card__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.question-card__text {
+    font-size: 1.125rem;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Answer Options */
+.answers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.answer-option {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 60px;
+}
+
+.answer-option:hover {
+    border-color: #3b82f6;
+    background: #f8fafc;
+}
+
+.answer-option input[type="radio"] {
+    margin-right: 1rem;
+    transform: scale(1.2);
+}
+
+.answer-option__text {
+    font-size: 1rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+.answer-option input[type="radio"]:checked + .answer-option__text {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.answer-option input[type="radio"]:checked ~ .answer-option {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+/* ===== RESPONSIVE CARDS ===== */
+
+/* Tablet */
+@media (min-width: 768px) {
+    .codemon-grid,
+    .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .codemon-card__header,
+    .collection-card__header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    .answers-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .codemon-grid,
+    .collection-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .stats-card {
+        text-align: left;
+    }
+}
+
+/* Large desktop */
+@media (min-width: 1280px) {
+    .codemon-grid,
+    .collection-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+    .codemon-card,
+    .collection-card,
+    .answer-option {
+        transition: none;
+    }
+    
+    .codemon-card:hover,
+    .collection-card:hover {
+        transform: none;
+    }
+}
+
+.answer-option:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}

@@ -1,0 +1,15 @@
+/* ===== COLLECTION PAGE ===== */
+/* Mostly covered in cards.css and layout.css */
+
+.collection-card__meta {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.collection-card__captured,
+.collection-card__score {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+}

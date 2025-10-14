@@ -1,0 +1,65 @@
+/* static/css/pages/home.css */
+/* ===== HOME PAGE SPECIFIC STYLES ===== */
+
+.welcome-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* User Dashboard */
+.user-dashboard {
+    margin-top: 3rem;
+}
+
+.guest-content {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.guest-message {
+    font-size: 1.125rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* Dashboard Actions */
+.dashboard-actions,
+.guest-actions {
+    margin-top: 2rem;
+}
+
+/* ===== RESPONSIVE HOME ===== */
+
+/* Tablet */
+@media (min-width: 768px) {
+    .guest-content {
+        padding: 3rem;
+    }
+    
+    .guest-message {
+        font-size: 1.25rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .welcome-content {
+        padding: 2rem 0;
+    }
+    
+    .user-dashboard {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 2rem;
+        align-items: start;
+    }
+    
+    .stats-card {
+        margin-bottom: 0;
+    }
+}
