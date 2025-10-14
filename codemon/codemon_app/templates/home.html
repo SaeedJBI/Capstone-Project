@@ -11,12 +11,24 @@
         <div class="user-dashboard">
             <div class="stats-card">
                 <h3 class="stats-card__title"> Hello, {{ user.username }}!</h3>
-                <p class="stats-card__rolls">Rolls available: <strong>{{ user.userprofile.available_rolls }}</strong></p>
+                <p class="stats-card__rolls">Rolls available: <strong>{{ user.userprofile.available_rolls }}</strong>
+                </p>
 
                 {% if user.userprofile.can_claim_daily_bonus %}
                 <form method="post" action="{% url 'claim-daily-bonus' %}" class="bonus-form">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-success btn-large"> Claim Daily Bonus (+1 Roll)</button>
+                    <button type="submit" class="btn btn-reward btn-large"> Claim Daily Bonus (+1 Roll)
+                        <span class="gold-sparkle gold-sparkle--small gold-sparkle-1"></span>
+                        <span class="gold-sparkle gold-sparkle--medium gold-sparkle-2"></span>
+                        <span class="gold-sparkle gold-sparkle--large gold-sparkle-3"></span>
+                        <span class="gold-sparkle gold-sparkle--small gold-sparkle-4"></span>
+                        <span class="gold-sparkle gold-sparkle--medium gold-sparkle-5"></span>
+                        <span class="gold-sparkle gold-sparkle--small gold-sparkle-6"></span>
+
+                        <!-- White Sparkles -->
+                        <span class="white-sparkle white-sparkle-1"></span>
+                        <span class="white-sparkle white-sparkle-2"></span>
+                    </button>
                 </form>
                 {% else %}
                 <p class="bonus-message"> Daily bonus already claimed today</p>
@@ -30,7 +42,7 @@
             {% endif %}
 
             <div class="dashboard-actions">
-                <a href="{% url 'battle-encounter' %}" class="btn btn-primary">Battle Codemon</a>
+                <a href="{% url 'battle-encounter' %}" class="btn btn-battle btn-large">Battle Codemon</a>
                 <a href="{% url 'my-collection' %}" class="btn btn-secondary">My Collection</a>
                 <a href="{% url 'codemon-list' %}" class="btn btn-secondary">View All Codemon</a>
             </div>

@@ -67,6 +67,24 @@
     font-weight: 600;
 }
 
+
+/* Style nav-link when used as a button */
+.nav-link.nav-button {
+    background: transparent;
+    border: 1px solid #fbbf24;
+    color: #fbbf24;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.nav-link.nav-button:hover {
+    background-color: rgba(251, 191, 36, 0.15);
+    border-color: #f59e0b;
+    color: #fcd34d;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+}
+
 /* ===== MOBILE NAVIGATION ENHANCEMENTS ===== */
 
 /* Tablet */
@@ -98,16 +116,191 @@
 }
 
 /* ===== MOBILE MENU TOGGLE (For future hamburger menu) ===== */
+/* ===== PROFESSIONAL HAMBURGER MENU ===== */
+
+/* Hamburger Button */
 .nav-toggle {
-    display: none;
-    background: none;
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
     border: none;
-    color: white;
-    font-size: 1.5rem;
     cursor: pointer;
-    padding: 0.5rem;
-    min-height: 44px;
-    min-width: 44px;
+    padding: 0;
+    position: relative;
+    z-index: 1001;
+}
+
+/* Hamburger Icon */
+.hamburger-box {
+    width: 24px;
+    height: 18px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -1px;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    border-radius: 1px;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+    content: '';
+    display: block;
+}
+
+.hamburger-inner::before {
+    top: -8px;
+}
+
+.hamburger-inner::after {
+    bottom: -8px;
+}
+
+/* Hamburger Animation - Transform to X */
+.nav-toggle[aria-expanded="true"] .hamburger-inner {
+    background-color: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger-inner::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger-inner::after {
+    bottom: 0;
+    transform: rotate(-45deg);
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 767px) {
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        flex-direction: column;
+        padding: 80px 2rem 2rem;
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    
+    .nav-menu[data-visible="true"] {
+        right: 0;
+    }
+    
+    .nav-link {
+        padding: 1rem 1.5rem;
+        margin: 0.25rem 0;
+        border-radius: 0.5rem;
+        font-size: 1.125rem;
+        border: none;
+        text-align: left;
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    /* Overlay when menu is open */
+    .nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-overlay[data-visible="true"] {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Tablet and Desktop - Standard Horizontal Menu */
+@media (min-width: 768px) {
+    .nav-menu {
+        display: flex;
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+        flex-direction: row;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        width: auto;
+    }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+/* Focus styles */
+.nav-toggle:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .nav-menu,
+    .hamburger-inner,
+    .hamburger-inner::before,
+    .hamburger-inner::after,
+    .nav-overlay {
+        transition: none;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .hamburger-inner,
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+        background-color: #000;
+        border: 1px solid #fff;
+    }
+    
+    .nav-menu {
+        background: #000;
+        border-left: 2px solid #fff;
+    }
 }
 
 /* ===== ACCESSIBILITY ===== */

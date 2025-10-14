@@ -70,6 +70,439 @@
     box-shadow: 0 4px 8px rgba(16, 185, 129, 0.4);
 }
 
+/* Add to static/css/components/buttons.css */
+
+/* Golden Sparkling Reward Button - Mobile First */
+.btn-reward {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    font-weight: 700;
+    position: relative;
+    overflow: hidden;
+    min-height: 52px;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    
+    /* Mobile-optimized transitions */
+    transition: 
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.3s ease;
+}
+
+/* Golden sparkle particles */
+.btn-reward .gold-sparkle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Different sizes of golden sparkles */
+.btn-reward .gold-sparkle--small {
+    width: 3px;
+    height: 3px;
+    background: linear-gradient(45deg, #FFD700, #FFEC8B);
+    box-shadow: 0 0 4px #FFD700;
+}
+
+.btn-reward .gold-sparkle--medium {
+    width: 5px;
+    height: 5px;
+    background: linear-gradient(45deg, #FFD700, #FFF380);
+    box-shadow: 0 0 6px #FFD700;
+}
+
+.btn-reward .gold-sparkle--large {
+    width: 7px;
+    height: 7px;
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    box-shadow: 0 0 8px #FFD700;
+}
+
+/* Golden sparkle animations */
+.btn-reward .gold-sparkle-1 {
+    top: 15%;
+    left: 15%;
+    animation: gold-sparkle-1 3s infinite ease-in-out;
+}
+
+.btn-reward .gold-sparkle-2 {
+    top: 75%;
+    right: 20%;
+    animation: gold-sparkle-2 2.5s infinite ease-in-out;
+}
+
+.btn-reward .gold-sparkle-3 {
+    top: 40%;
+    right: 15%;
+    animation: gold-sparkle-3 3.2s infinite ease-in-out;
+}
+
+.btn-reward .gold-sparkle-4 {
+    top: 85%;
+    left: 25%;
+    animation: gold-sparkle-4 2.8s infinite ease-in-out;
+}
+
+/* Golden sparkle animation paths */
+@keyframes gold-sparkle-1 {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) translate(0, 0) rotate(0deg);
+    }
+    25% {
+        opacity: 1;
+        transform: scale(1.2) translate(8px, -8px) rotate(90deg);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1) translate(12px, -12px) rotate(180deg);
+    }
+    75% {
+        opacity: 0;
+        transform: scale(0.5) translate(16px, -16px) rotate(270deg);
+    }
+}
+
+@keyframes gold-sparkle-2 {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) translate(0, 0);
+    }
+    30% {
+        opacity: 1;
+        transform: scale(1.1) translate(-6px, 6px);
+    }
+    60% {
+        opacity: 0.6;
+        transform: scale(0.9) translate(-10px, 10px);
+    }
+    90% {
+        opacity: 0;
+        transform: scale(0.4) translate(-14px, 14px);
+    }
+}
+
+@keyframes gold-sparkle-3 {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) translate(0, 0) rotate(0deg);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1.3) translate(5px, 5px) rotate(45deg);
+    }
+    40% {
+        opacity: 0.9;
+        transform: scale(1.1) translate(8px, 8px) rotate(90deg);
+    }
+    60% {
+        opacity: 0;
+        transform: scale(0.6) translate(10px, 10px) rotate(135deg);
+    }
+}
+
+@keyframes gold-sparkle-4 {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) translate(0, 0);
+    }
+    35% {
+        opacity: 1;
+        transform: scale(1.1) translate(-7px, -7px);
+    }
+    70% {
+        opacity: 0.7;
+        transform: scale(0.8) translate(-12px, -12px);
+    }
+}
+
+/* White sparkles (keeping your original ones) */
+.btn-reward .white-sparkle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.btn-reward .white-sparkle-1 {
+    top: 30%;
+    right: 20%;
+    animation: white-sparkle-1 2.2s infinite linear;
+}
+
+.btn-reward .white-sparkle-2 {
+    top: 80%;
+    left: 30%;
+    animation: white-sparkle-2 1.8s infinite linear;
+}
+
+@keyframes white-sparkle-1 {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) translate(0, 0);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1) translate(5px, -5px);
+    }
+    80% {
+        opacity: 0;
+        transform: scale(0) translate(8px, -8px);
+    }
+}
+
+@keyframes white-sparkle-2 {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) translate(0, 0);
+    }
+    25% {
+        opacity: 1;
+        transform: scale(1.1) translate(-4px, 4px);
+    }
+    50% {
+        opacity: 0;
+        transform: scale(0) translate(-6px, 6px);
+    }
+}
+
+/* Golden glow effect on hover */
+.btn-reward::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+/* Mobile hover states */
+@media (hover: hover) and (pointer: fine) {
+    .btn-reward:hover {
+        background: linear-gradient(135deg, #0da271, #047857);
+        box-shadow: 
+            0 4px 15px rgba(16, 185, 129, 0.4),
+            0 0 20px rgba(255, 215, 0, 0.3);
+        transform: translateY(-2px);
+    }
+    
+    .btn-reward:hover::after {
+        opacity: 1;
+    }
+    
+    /* Enhanced sparkles on hover */
+    .btn-reward:hover .gold-sparkle,
+    .btn-reward:hover .white-sparkle {
+        opacity: 1;
+        animation-duration: 0.8s; /* Faster sparkles on hover */
+    }
+}
+
+/* Mobile touch interactions */
+.btn-reward:active {
+    background: linear-gradient(135deg, #0d9466, #03644a);
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(16, 185, 129, 0.4);
+}
+
+/* Focus states with golden accent */
+.btn-reward:focus-visible {
+    outline: 3px solid #FFD700;
+    outline-offset: 2px;
+    box-shadow: 
+        0 0 0 3px rgba(255, 215, 0, 0.3),
+        0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* Enhanced effects on larger screens */
+@media (min-width: 768px) and (hover: hover) {
+    .btn-reward {
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    }
+    
+    .btn-reward:hover {
+        transform: translateY(-3px);
+        box-shadow: 
+            0 6px 20px rgba(16, 185, 129, 0.5),
+            0 0 30px rgba(255, 215, 0, 0.4);
+    }
+    
+    /* Add more golden sparkles on larger screens */
+    .btn-reward .gold-sparkle-5 {
+        top: 10%;
+        left: 80%;
+        animation: gold-sparkle-5 3.5s infinite ease-in-out;
+    }
+    
+    .btn-reward .gold-sparkle-6 {
+        top: 60%;
+        left: 10%;
+        animation: gold-sparkle-6 2.7s infinite ease-in-out;
+    }
+    
+    @keyframes gold-sparkle-5 {
+        0%, 100% { opacity: 0; transform: scale(0) translate(0, 0); }
+        40% { opacity: 1; transform: scale(1.2) translate(3px, 3px); }
+        80% { opacity: 0; transform: scale(0) translate(5px, 5px); }
+    }
+    
+    @keyframes gold-sparkle-6 {
+        0%, 100% { opacity: 0; transform: scale(0) translate(0, 0); }
+        20% { opacity: 1; transform: scale(1.1) translate(-5px, -5px); }
+        40% { opacity: 0; transform: scale(0) translate(-8px, -8px); }
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .btn-reward .gold-sparkle,
+    .btn-reward .white-sparkle,
+    .btn-reward::after {
+        display: none;
+    }
+    
+    .btn-reward {
+        transition: none;
+    }
+    
+    .btn-reward:hover,
+    .btn-reward:active {
+        transform: none;
+    }
+}
+
+/* Energetic Animated Battle Button - Mobile First */
+.btn-battle {
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    min-height: 52px; /* Mobile touch target */
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    
+    /* Mobile-optimized transitions */
+    transition: 
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.3s ease;
+}
+
+/* Shine animation - disabled on mobile for performance */
+.btn-battle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent
+    );
+    transition: left 0.7s ease;
+}
+
+/* Mobile hover states (for devices that support hover) */
+@media (hover: hover) and (pointer: fine) {
+    .btn-battle:hover::before {
+        left: 100%;
+    }
+    
+    .btn-battle:hover {
+        background: linear-gradient(135deg, #ff512f, #f09819);
+        box-shadow: 
+            0 4px 15px rgba(255, 107, 53, 0.5),
+            0 0 20px rgba(255, 107, 53, 0.2);
+        transform: translateY(-2px) scale(1.03);
+    }
+}
+
+/* Mobile touch interactions */
+.btn-battle:active {
+    background: linear-gradient(135deg, #e55a2b, #d9821a);
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(255, 107, 53, 0.4);
+}
+
+/* Focus states for keyboard navigation (important for accessibility) */
+.btn-battle:focus-visible {
+    outline: 3px solid #ff6b35;
+    outline-offset: 2px;
+    box-shadow: 
+        0 0 0 3px rgba(255, 107, 53, 0.3),
+        0 2px 8px rgba(255, 107, 53, 0.3);
+}
+
+/* Reduced motion support for users who prefer less animation */
+@media (prefers-reduced-motion: reduce) {
+    .btn-battle {
+        transition: none;
+    }
+    
+    .btn-battle::before {
+        display: none;
+    }
+    
+    .btn-battle:hover,
+    .btn-battle:active {
+        transform: none;
+    }
+}
+
+/* Tablet and larger screens - enable more animations */
+@media (min-width: 768px) and (hover: hover) {
+    .btn-battle {
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+    }
+    
+    .btn-battle:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 
+            0 6px 20px rgba(255, 107, 53, 0.6),
+            0 0 30px rgba(255, 107, 53, 0.3);
+    }
+    
+    /* Optional: Add pulse animation only on larger screens */
+    @keyframes battle-pulse {
+        0% {
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+        50% {
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.7);
+        }
+        100% {
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+    }
+    
+    .btn-battle:hover {
+        animation: battle-pulse 1.5s infinite;
+    }
+}
+
+/* Desktop - full animations */
+@media (min-width: 1024px) and (hover: hover) {
+    .btn-battle:hover {
+        transform: translateY(-4px) scale(1.08);
+    }
+}
+
 /* Disabled state */
 .btn:disabled {
     opacity: 0.6;
