@@ -117,6 +117,17 @@ A mobile-first, gamified learning platform where users master tech concepts by "
 - Django 4.2+
 
 ### Installation
+1️⃣ **Install PostgreSQL locally**
+
+If you don’t already have it, you need to install PostgreSQL itself:
+
+Download PostgreSQL
+
+During setup, note your username, password, and port (usually 5432)
+
+Ensure the service is running (you can test with SQL Shell or pgAdmin)
+
+2️⃣ **Cloning and environment Setup**
 ```bash
 # Clone the Capstone Project repository
 git clone https://github.com/SaeedJBI/Capstone-Project.git
@@ -132,11 +143,54 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 # Install dependencies
 pip install -r requirements.txt
 
-# Set up database
-createdb codemon
+# Preferred Database management system: PostgreSQL
+# Set up database: on SQL Shell (psql)
+CREATE DATABASE codemon;
 
 # Run migrations
 python manage.py migrate
 
 # Start development server
 python manage.py runserver
+```
+3️⃣ **Configure Database Settings in Django**
+
+After creating the codemon database in SQL Shell, you need to tell Django to use it.
+
+- Open:
+📄 codemon/settings.py
+
+- Find the **DATABASES** section and edit it like this:
+```bash
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'codemon',
+        'USER': 'postgres',       # your PostgreSQL username
+        'PASSWORD': 'your_password', # your password
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+```
+4️⃣ **Ensure your django project is successfully connecting to the DB by running the server**
+
+5️⃣ **Insert the dummy data**
+run: 
+```bash
+python manage.py load_dummy_data
+```
+6️⃣ **Run makemigrations (before migrate)**
+```bash
+python manage.py makemigratoins # this also ensures your connection witht the DB is successful
+# then run
+python manage.py migrate
+```
+7️⃣ **Create a Superuser (for admin panel)**
+```bash
+python manage.py createsuperuser
+```
+- Then follow the prompts to create it
+- Run the server and visit **http://localhost:8000/admin/** to login
+- Make sure all the models are created and they contain the dummy data
+
