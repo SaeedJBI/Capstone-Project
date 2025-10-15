@@ -31,15 +31,15 @@
                     </button>
                 </form>
                 {% else %}
-                <p class="bonus-message"> Daily bonus already claimed today</p>
+                <p class="bonus-message">
+                    Daily bonus already claimed today
+                    <span class="star-1"></span>
+                    <span class="star-2"></span>
+                    <span class="star-3"></span>
+                    <span class="star-4"></span>
+                </p>
                 {% endif %}
             </div>
-
-            {% if bonus_message %}
-            <div class="alert {% if bonus_success %}alert-success{% else %}alert-warning{% endif %}">
-                {{ bonus_message }}
-            </div>
-            {% endif %}
 
             <div class="dashboard-actions">
                 <a href="{% url 'battle-encounter' %}" class="btn btn-battle-start btn-large">Battle Codemon</a>

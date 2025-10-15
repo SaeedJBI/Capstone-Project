@@ -119,13 +119,13 @@ A mobile-first, gamified learning platform where users master tech concepts by "
 ### Installation
 1️⃣ **Install PostgreSQL locally**
 
-If you don’t already have it, you need to install PostgreSQL itself:
+- If you don’t already have it, you need to install PostgreSQL itself:
 
-Download PostgreSQL
+- Download PostgreSQL
 
-During setup, note your username, password, and port (usually 5432)
+- During setup, note your username, password, and port (usually 5432)
 
-Ensure the service is running (you can test with SQL Shell or pgAdmin)
+- Ensure the service is running (you can test with SQL Shell or pgAdmin)
 
 2️⃣ **Cloning and environment Setup**
 ```bash
@@ -157,8 +157,7 @@ python manage.py runserver
 
 After creating the codemon database in SQL Shell, you need to tell Django to use it.
 
-- Open:
-📄 codemon/settings.py
+- Open: codemon/settings.py
 
 - Find the **DATABASES** section and edit it like this:
 ```bash

@@ -103,9 +103,147 @@
     color: #6b7280;
     font-style: italic;
     margin: 1.5rem 0;
-    padding: 1rem;
-    background: #f3f4f6;
+    padding: 1.5rem;
+    background: linear-gradient(45deg, #fef3c7, #fef7cd, #fef3c7);
     border-radius: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    animation: celebrate 3s ease-in-out;
+    border: 2px solid #f59e0b;
+    font-weight: 600;
+}
+
+/* Create multiple star particles */
+.bonus-message::before,
+.bonus-message::after,
+.bonus-message .star-1,
+.bonus-message .star-2,
+.bonus-message .star-3,
+.bonus-message .star-4 {
+    content: "⭐";
+    position: absolute;
+    font-size: 1.2rem;
+    animation: float 2s ease-in-out infinite;
+}
+
+.bonus-message::before {
+    top: -15px;
+    left: 15px;
+    animation-delay: 0s;
+}
+
+.bonus-message::after {
+    bottom: -15px;
+    right: 15px;
+    animation-delay: 1s;
+}
+
+/* Additional stars - we'll add these via CSS content */
+.bonus-message .star-1 {
+    top: -10px;
+    right: 20%;
+    animation-delay: 0.3s;
+    content: "🌟";
+}
+
+.bonus-message .star-2 {
+    bottom: -10px;
+    left: 25%;
+    animation-delay: 0.7s;
+    content: "💫";
+}
+
+.bonus-message .star-3 {
+    top: 50%;
+    left: -15px;
+    animation-delay: 0.5s;
+    content: "✨";
+}
+
+.bonus-message .star-4 {
+    top: 50%;
+    right: -15px;
+    animation-delay: 1.2s;
+    content: "⚡";
+}
+
+@keyframes celebrate {
+    0% {
+        transform: scale(0.8) rotate(-2deg);
+        opacity: 0;
+    }
+    30% {
+        transform: scale(1.1) rotate(2deg);
+    }
+    60% {
+        transform: scale(0.95) rotate(-1deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translateY(-8px) rotate(90deg) scale(1.2);
+    }
+    50% {
+        transform: translateY(-12px) rotate(180deg) scale(1.1);
+    }
+    75% {
+        transform: translateY(-8px) rotate(270deg) scale(1.2);
+    }
+}
+
+/* Add a subtle background shimmer */
+.bonus-message::selection {
+    background: transparent;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .bonus-message::before,
+    .bonus-message::after,
+    .bonus-message .star-1,
+    .bonus-message .star-2,
+    .bonus-message .star-3,
+    .bonus-message .star-4 {
+        font-size: 1rem;
+    }
+    
+    .bonus-message .star-3,
+    .bonus-message .star-4 {
+        display: none; /* Hide side stars on mobile */
+    }
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes color-shift {
+    0%, 100% {
+        background: #f3f4f6;
+        color: #6b7280;
+    }
+    50% {
+        background: #dbeafe;
+        color: #1e40af;
+    }
 }
 
 /* Battle Form */

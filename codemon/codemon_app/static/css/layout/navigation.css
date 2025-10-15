@@ -76,6 +76,7 @@
     font-family: inherit;
     font-size: inherit;
     cursor: pointer;
+    margin-top: 1rem;
 }
 
 .nav-link.nav-button:hover {
@@ -84,6 +85,7 @@
     color: #fcd34d;
     box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
 }
+
 
 /* ===== MOBILE NAVIGATION ENHANCEMENTS ===== */
 

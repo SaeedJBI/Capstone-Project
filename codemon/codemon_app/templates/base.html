@@ -27,25 +27,54 @@
                     <span class="hamburger-inner"></span>
                 </span>
             </button>
-            <div class="nav-menu">
-                <a href="{% url 'home' %}" class="nav-link">Home</a>
-                <a href="{% url 'codemon-list' %}" class="nav-link">All codemon</a>
-                <a href="{% url 'battle-encounter' %}" class="nav-link">Battle!</a>
 
-                {% if user.is_authenticated %}
-                <a href="{% url 'my-collection' %}" class="nav-link">My Collection</a>
+           <div class="nav-menu" id="nav-menu">
+    <!-- Regular Navigation -->
+    <a href="{% url 'home' %}" class="nav-link">Home</a>
+        {% if user.is_authenticated %}
+        <a href="#" class="nav-link">Profile</a>  <!-- KEEP THIS for mobile order -->
+        {% endif %}
+    <a href="{% url 'codemon-list' %}" class="nav-link">All Codemon</a>
+    <a href="{% url 'battle-encounter' %}" class="nav-link">Battle!</a>
 
-                <span class="nav-user">Hello, {{ user.username }}!</span>
-                <form method="post" action="{% url 'logout' %}" class="nav-form">
+    {% if user.is_authenticated %}
+        <!-- DESKTOP User Dropdown (keep as is) -->
+        <div class="desktop-user-dropdown">
+            <button class="user-initials-btn dropdown-toggle">
+                {{ user.first_name|first|default:user.username.0|upper }}{{user.last_name|first|default:""|upper }}
+            </button>
+            <div class="desktop-dropdown-menu">
+                <div class="desktop-dropdown-header">
+                    <strong>{{ user.username }}</strong>
+                    {% if user.email %}
+                    <small>{{ user.email }}</small>
+                    {% endif %}
+                </div>
+                <div class="desktop-dropdown-divider"></div>
+                <a href="#" class="desktop-dropdown-item">Profile</a>
+                <a href="{% url 'my-collection' %}" class="desktop-dropdown-item">My Collection</a>
+                <div class="desktop-dropdown-divider"></div>
+                <form method="post" action="{% url 'logout' %}" class="desktop-dropdown-form">
                     {% csrf_token %}
-                    <button type="submit" class="nav-link nav-button">Logout</button>
+                    <button type="submit" class="desktop-dropdown-item desktop-logout-btn">Logout</button>
                 </form>
-                {% else %}
-                <a href="{% url 'login' %}" class="nav-link">Login</a>
-                <a href="{% url 'signup' %}" class="nav-link">Sign Up</a>
-                {% endif %}
-
             </div>
+        </div>
+
+        <!-- MOBILE Auth Links -->
+        <div class="mobile-auth-links">
+            <a href="{% url 'my-collection' %}" class="nav-link">My Collection</a>
+            <form method="post" action="{% url 'logout' %}" class="mobile-logout-form">
+                {% csrf_token %}
+                <button type="submit" class="nav-link nav-button">Logout</button>
+            </form>
+        </div>
+    {% else %}
+        <!-- Guest links -->
+        <a href="{% url 'login' %}" class="nav-link">Login</a>
+        <a href="{% url 'signup' %}" class="nav-link">Sign Up</a>
+    {% endif %}
+</div>
         </div>
     </nav>
 
@@ -55,6 +84,7 @@
         {% endblock %}
     </main>
     <script src="{% static 'js/navigation.js' %}" defer></script>
+    <script src="{% static 'js/initials.js' %}" defer></script>
 </body>
 
 </html>
