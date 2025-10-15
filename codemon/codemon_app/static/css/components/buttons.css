@@ -380,28 +380,22 @@
     }
 }
 
-/* Energetic Animated Battle Button - Mobile First */
+/* Add to static/css/components/buttons.css */
+
+/* Energetic Animated Battle Button */
 .btn-battle {
-    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    background: linear-gradient(135deg, #d74d1b, #f7931e);
     color: white;
-    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     position: relative;
     overflow: hidden;
-    min-height: 52px; /* Mobile touch target */
-    padding: 1rem 2rem;
-    font-size: 1.125rem;
-    
-    /* Mobile-optimized transitions */
-    transition: 
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-/* Shine animation - disabled on mobile for performance */
+/* Shine animation effect */
 .btn-battle::before {
     content: '';
     position: absolute;
@@ -418,88 +412,245 @@
     transition: left 0.7s ease;
 }
 
-/* Mobile hover states (for devices that support hover) */
-@media (hover: hover) and (pointer: fine) {
-    .btn-battle:hover::before {
-        left: 100%;
-    }
-    
-    .btn-battle:hover {
-        background: linear-gradient(135deg, #ff512f, #f09819);
-        box-shadow: 
-            0 4px 15px rgba(255, 107, 53, 0.5),
-            0 0 20px rgba(255, 107, 53, 0.2);
-        transform: translateY(-2px) scale(1.03);
-    }
+.btn-battle:hover::before {
+    left: 100%;
 }
 
-/* Mobile touch interactions */
-.btn-battle:active {
-    background: linear-gradient(135deg, #e55a2b, #d9821a);
-    transform: scale(0.98);
-    box-shadow: 0 1px 4px rgba(255, 107, 53, 0.4);
-}
-
-/* Focus states for keyboard navigation (important for accessibility) */
-.btn-battle:focus-visible {
-    outline: 3px solid #ff6b35;
-    outline-offset: 2px;
+.btn-battle:hover {
+    background: linear-gradient(135deg, #ff512f, #f09819);
     box-shadow: 
-        0 0 0 3px rgba(255, 107, 53, 0.3),
-        0 2px 8px rgba(255, 107, 53, 0.3);
+        0 6px 20px rgba(255, 107, 53, 0.6),
+        0 0 30px rgba(255, 107, 53, 0.3);
+    transform: translateY(-3px) scale(1.05);
 }
 
-/* Reduced motion support for users who prefer less animation */
-@media (prefers-reduced-motion: reduce) {
-    .btn-battle {
-        transition: none;
-    }
-    
-    .btn-battle::before {
-        display: none;
-    }
-    
-    .btn-battle:hover,
-    .btn-battle:active {
-        transform: none;
-    }
+.btn-battle:active {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.5);
 }
 
-/* Tablet and larger screens - enable more animations */
-@media (min-width: 768px) and (hover: hover) {
-    .btn-battle {
+/* Pulsing animation for extra energy */
+@keyframes battle-pulse {
+    0% {
         box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
     }
-    
-    .btn-battle:hover {
-        transform: translateY(-3px) scale(1.05);
-        box-shadow: 
-            0 6px 20px rgba(255, 107, 53, 0.6),
-            0 0 30px rgba(255, 107, 53, 0.3);
+    50% {
+        box-shadow: 0 4px 20px rgba(255, 107, 53, 0.7);
     }
-    
-    /* Optional: Add pulse animation only on larger screens */
-    @keyframes battle-pulse {
-        0% {
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
-        }
-        50% {
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.7);
-        }
-        100% {
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
-        }
-    }
-    
-    .btn-battle:hover {
-        animation: battle-pulse 1.5s infinite;
+    100% {
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
     }
 }
 
-/* Desktop - full animations */
+/* Optional: Add subtle pulse animation on hover */
+.btn-battle:hover {
+    animation: battle-pulse 1.5s infinite;
+}
+
+/* Core Battle Start Button - With Press Animation */
+.btn-battle-start {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+    box-shadow: 
+        0 4px 15px rgba(220, 38, 38, 0.4),
+        0 0 0 0 rgba(220, 38, 38, 0.7);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    min-height: 60px;
+    padding: 1.25rem 2.5rem;
+    font-size: 1.25rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Add a subtle text shadow for better readability */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Battle-ready glow effect */
+.btn-battle-start::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #ef4444, #dc2626, #b91c1c, #ef4444);
+    background-size: 400% 400%;
+    border-radius: inherit;
+    z-index: -1;
+    animation: battle-glow 3s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+@keyframes battle-glow {
+    0%, 100% {
+        background-position: 0% 50%;
+        opacity: 0.7;
+    }
+    50% {
+        background-position: 100% 50%;
+        opacity: 1;
+    }
+}
+
+/* Ripple effect on click */
+.btn-battle-start::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease-out, height 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+/* Hover states for capable devices */
+@media (hover: hover) and (pointer: fine) {
+    .btn-battle-start:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 
+            0 6px 20px rgba(220, 38, 38, 0.6),
+            0 0 0 10px rgba(220, 38, 38, 0);
+        animation: pulse-glow 2s infinite;
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 
+            0 6px 20px rgba(220, 38, 38, 0.6),
+            0 0 0 0 rgba(220, 38, 38, 0.4);
+    }
+    50% {
+        box-shadow: 
+            0 6px 25px rgba(220, 38, 38, 0.8),
+            0 0 0 8px rgba(220, 38, 38, 0.2);
+    }
+}
+
+/* === CORE PRESS ANIMATION === */
+.btn-battle-start:active {
+    /* Immediate scale down for tactile feedback */
+    transform: scale(0.95);
+    
+    /* Darken background for press feedback */
+    background: linear-gradient(135deg, #b91c1c, #991b1b);
+    
+    /* Remove hover shadows and show press state */
+    box-shadow: 
+        0 2px 8px rgba(220, 38, 38, 0.6),
+        inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    
+    /* Trigger ripple animation */
+    animation: battle-press 0.4s ease-out;
+}
+
+/* Ripple animation on press */
+.btn-battle-start:active::after {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+/* Press animation keyframes */
+@keyframes battle-press {
+    0% {
+        transform: scale(1);
+        box-shadow: 
+            0 6px 20px rgba(220, 38, 38, 0.6),
+            0 0 0 0 rgba(220, 38, 38, 0.4);
+    }
+    50% {
+        transform: scale(0.92);
+        box-shadow: 
+            0 2px 6px rgba(220, 38, 38, 0.8),
+            inset 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 
+            0 2px 8px rgba(220, 38, 38, 0.6),
+            inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Impact shake effect */
+@keyframes battle-shake {
+    0%, 100% { transform: translateX(0) scale(0.95); }
+    25% { transform: translateX(-2px) scale(0.95); }
+    75% { transform: translateX(2px) scale(0.95); }
+}
+
+.btn-battle-start:active {
+    animation: battle-press 0.4s ease-out, battle-shake 0.1s ease-in-out 0.4s;
+}
+
+/* Success state after click (for when battle loads) */
+.btn-battle-start--loading {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    cursor: not-allowed;
+    transform: scale(0.98);
+}
+
+.btn-battle-start--loading::before {
+    animation: none;
+    opacity: 0.5;
+}
+
+/* Focus states for accessibility */
+.btn-battle-start:focus-visible {
+    outline: 3px solid #ef4444;
+    outline-offset: 3px;
+    box-shadow: 
+        0 0 0 3px rgba(239, 68, 68, 0.3),
+        0 6px 20px rgba(220, 38, 38, 0.6);
+}
+
+/* Mobile-optimized press effects */
+@media (max-width: 767px) {
+    .btn-battle-start {
+        min-height: 64px; /* Larger touch target */
+        padding: 1.5rem 2rem;
+    }
+    
+    .btn-battle-start:active {
+        transform: scale(0.93); /* More pronounced press on mobile */
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .btn-battle-start::before {
+        animation: none;
+        opacity: 0.5;
+    }
+    
+    .btn-battle-start:hover {
+        animation: none;
+    }
+    
+    .btn-battle-start:active {
+        animation: none;
+        transform: scale(0.96);
+    }
+    
+    .btn-battle-start::after {
+        display: none;
+    }
+}
+
+/* Desktop enhancements */
 @media (min-width: 1024px) and (hover: hover) {
-    .btn-battle:hover {
-        transform: translateY(-4px) scale(1.08);
+    .btn-battle-start:hover {
+        transform: translateY(-3px) scale(1.03);
     }
 }
 

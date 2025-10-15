@@ -251,3 +251,27 @@ input:focus-visible {
         border: 1px solid #000;
     }
 }
+
+.codemon-name--highlight {
+    background: linear-gradient(135deg, #ff6b35, #f7931e, #ff512f);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    display: inline-block;
+    animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

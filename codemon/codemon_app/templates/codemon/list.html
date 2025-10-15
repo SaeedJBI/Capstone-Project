@@ -37,9 +37,16 @@
                 </p>
                 <p class="codemon-card__difficulty">
                     <span class="label">Level:</span>
-                    <span class="difficulty-badge difficulty-{{ codemon.difficulty|lower }}">
-                        {{ codemon.get_difficulty_display }}
-                    </span>
+                <div class="difficulty-progress">
+                    <div class="difficulty-track">
+                        <div class="difficulty-fill difficulty-{{ codemon.difficulty|lower }}" style="width: 
+                 {% if codemon.difficulty == 'B' %}33%
+                 {% elif codemon.difficulty == 'I' %}66%
+                 {% else %}100%{% endif %}">
+                            <span class="difficulty-text">{{ codemon.get_difficulty_display }}</span>
+                        </div>
+                    </div>
+                </div>
                 </p>
             </div>
         </article>

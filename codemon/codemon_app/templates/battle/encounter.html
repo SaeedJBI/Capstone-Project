@@ -7,47 +7,58 @@
 <div class="page-container">
     <div class="encounter-container">
         <header class="encounter-header">
-            <h1 class="page-title">You encountered {{ codemon.name }}!</h1>
+<h1 class="page-title">
+    You encountered <span class="codemon-name--highlight">{{ codemon.name }}</span>!
+</h1>
             <p class="rolls-remaining">Rolls left: <strong>{{ rolls_remaining }}</strong></p>
         </header>
 
         <div class="codemon-display">
+                            <div class="codemon-skills">
+                    <div class="skills-list">
+                        {% for skill in codemon.skills.all %}
+                        <span class="skill-tag">{{ skill.name }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
             <div class="codemon-image">
                 {% if codemon.image_url %}
-                    <img src="{% static codemon.image_url %}" alt="{{ codemon.name }}" class="codemon-img">
+                <img src="{% static codemon.image_url %}" alt="{{ codemon.name }}" class="codemon-img">
                 {% else %}
-                    <div class="placeholder-img">🐉</div>
+                <div class="placeholder-img">🐉</div>
                 {% endif %}
             </div>
-            
+
             <div class="codemon-info">
-                <h2 class="codemon-name">{{ codemon.name }}</h2>
+                
                 <div class="codemon-track">
                     <span class="track-badge" style="background-color: {{ codemon.tech_track.color }}">
                         {{ codemon.tech_track.name }}
                     </span>
                 </div>
-                <div class="codemon-skills">
-                    <span class="label">Skills:</span>
-                    <div class="skills-list">
-                        {% for skill in codemon.skills.all %}
-                            <span class="skill-tag">{{ skill.name }}</span>
-                        {% endfor %}
+
+                <p class="codemon-card__difficulty">
+                    <span class="label">Difficulty Level:</span>
+                <div class="difficulty-progress">
+                    <div class="difficulty-track">
+                        
+                        <div class="difficulty-fill difficulty-{{ codemon.difficulty|lower }}" style="width: 
+                 {% if codemon.difficulty == 'B' %}33%
+                 {% elif codemon.difficulty == 'I' %}66%
+                 {% else %}100%{% endif %}">
+                            <span class="difficulty-text">{{ codemon.get_difficulty_display }}</span>
+                        </div>
                     </div>
                 </div>
-                <div class="codemon-difficulty">
-                    <span class="label">Level:</span>
-                    <span class="difficulty-badge difficulty-{{ codemon.difficulty|lower }}">
-                        {{ codemon.get_difficulty_display }}
-                    </span>
-                </div>
+                </p>
             </div>
         </div>
-
-        <div class="encounter-actions">
-            <a href="{% url 'battle-start' codemon.id %}" class="btn btn-primary btn-large">Start Battle!</a>
-            <a href="{% url 'codemon-list' %}" class="btn btn-secondary">Run Away</a>
-        </div>
     </div>
+
+    <div class="encounter-actions">
+        <a href="{% url 'battle-start' codemon.id %}" class="btn btn-battle btn-large">Start Battle!</a>
+        <a href="{% url 'codemon-list' %}" class="btn btn-secondary">Run Away</a>
+    </div>
+</div>
 </div>
 {% endblock %}

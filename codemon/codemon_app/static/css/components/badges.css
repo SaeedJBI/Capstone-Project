@@ -16,46 +16,45 @@
     white-space: nowrap;
 }
 
-/* Track Badges - Using your database colors via inline styles */
+/* Track Badges - Using database colors via inline styles */
 .track-badge {
     color: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Difficulty Badges */
-.difficulty-badge {
+/* ===== SIMPLE PROGRESS BAR ===== */
+.difficulty-progress {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.difficulty-track {
+    height: 16px;
+    background: #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.difficulty-fill {
+    height: 100%;
+    border-radius: 8px;
+    position: relative;
+}
+
+.difficulty-b { background: linear-gradient(53deg, #10b981, #34d399); }
+.difficulty-i { background: linear-gradient(53deg, #f59e0b, #fbbf24); }
+.difficulty-a { background: linear-gradient(53deg, #dc2626, #9a4747); }
+
+.difficulty-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: white;
-    font-weight: 700;
-}
-
-.difficulty-beginner,
-.difficulty-a {
-    background: linear-gradient(135deg, #10b981, #059669);
-    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
-}
-
-.difficulty-intermediate,
-.difficulty-b {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
-    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
-}
-
-.difficulty-advanced,
-.difficulty-c {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
-}
-
-.difficulty-expert,
-.difficulty-d {
-    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-    box-shadow: 0 2px 4px rgba(139, 92, 246, 0.3);
-}
-
-.difficulty-master,
-.difficulty-e {
-    background: linear-gradient(135deg, #000000, #374151);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
 }
 
 /* Score Circle */
