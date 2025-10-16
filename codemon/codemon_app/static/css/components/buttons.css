@@ -33,7 +33,7 @@
 
 /* Button variants */
 .btn-primary {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    background: #f7931e;
     color: white;
     box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
 }

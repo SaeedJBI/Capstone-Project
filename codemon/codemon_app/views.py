@@ -4,6 +4,11 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 import random
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView
+from django.urls import reverse
+from .forms import CodemonForm
+
 
 # Create your views here.
 def home(request):
@@ -160,3 +165,24 @@ def claim_daily_bonus(request):
         'bonus_message': message,
         'bonus_success': success
     })
+
+class CodemonCreate(LoginRequiredMixin, CreateView):
+    model = TechCodemon
+    form_class = CodemonForm
+    template_name = 'codemon/codemon_form.html'
+    
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+
+        response = super().form_valid(form)
+
+        UserCodemonCollection.objects.create(
+            user=self.request.user,
+            codemon=self.object,
+            capture_score=100
+        )
+
+        return response
+    
+    def get_success_url(self):
+        return reverse('my-collection')

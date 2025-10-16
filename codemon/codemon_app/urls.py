@@ -10,4 +10,5 @@ urlpatterns = [
     path('battle/submit/<int:codemon_id>/', views.battle_submit, name='battle-submit'),
     path('collection/', views.my_collection, name='my-collection'),
     path('claim-daily-bonus/', views.claim_daily_bonus, name='claim-daily-bonus'),
+    path('codemon/create/', views.CodemonCreate.as_view(), name='codemon-create'),
 ]

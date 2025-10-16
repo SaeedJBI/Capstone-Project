@@ -27,7 +27,13 @@
                     {{ codemon.tech_track.name }}
                 </span>
             </header>
-
+            <div class="codemon-card__meta">
+                {% if codemon.created_by %}
+                <span class="creator-badge">Created by {{ codemon.created_by.username }}</span>
+                {% else %}
+                <span class="creator-badge">Official Codemon</span>
+                {% endif %}
+            </div>
             <div class="codemon-card__content">
                 <p class="codemon-card__skills">
                     <span class="label">Skills:</span>

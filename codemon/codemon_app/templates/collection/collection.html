@@ -9,6 +9,11 @@
         <h1 class="page-title">My Codemon Collection</h1>
         <p class="page-subtitle">Codemon captured: {{ collection.count }}</p>
     </header>
+    <div class="collection-actions">
+        <a href="{% url 'codemon-create' %}" class="btn btn-primary">
+            ➕ Create New Codemon
+        </a>
+    </div>
 
     {% if collection %}
     <div class="collection-grid">
@@ -16,27 +21,34 @@
         <article class="collection-card">
             <div class="collection-card__image">
                 {% if item.codemon.image_url %}
-                    <img src="{% static item.codemon.image_url %}" alt="{{ item.codemon.name }}" class="codemon-img">
+                <img src="{% static item.codemon.image_url %}" alt="{{ item.codemon.name }}" class="codemon-img">
                 {% else %}
-                    <div class="placeholder-img">🐉</div>
+                <div class="placeholder-img">🐉</div>
                 {% endif %}
             </div>
-            
-            <header class="collection-card__header">
-                <h2 class="collection-card__name">{{ item.codemon.name }}</h2>
-                <div class="collection-card__track">
-                    <span class="track-badge" style="background-color: {{ item.codemon.tech_track.color }}">
-                        {{ item.codemon.tech_track.name }}
-                    </span>
-                </div>
-            </header>
-            
+
+<header class="collection-card__header">
+    <h2 class="collection-card__name">{{ item.codemon.name }}</h2>
+    <div class="collection-card__badges">
+        <span class="track-badge" style="background-color: {{ item.codemon.tech_track.color }}">
+            {{ item.codemon.tech_track.name }}
+        </span>
+         <div class="codemon-card__meta">
+                {% if item.codemon.created_by %}
+                <span class="creator-badge">Created by {{ item.codemon.created_by.username }}</span>
+                {% else %}
+                <span class="creator-badge">Official Codemon</span>
+                {% endif %}
+            </div>
+    </div>
+</header>
+
             <div class="collection-card__content">
                 <div class="collection-card__skills">
                     <span class="label">Skills:</span>
                     <div class="skills-list">
                         {% for skill in item.codemon.skills.all %}
-                            <span class="skill-tag">{{ skill.name }}</span>
+                        <span class="skill-tag">{{ skill.name }}</span>
                         {% endfor %}
                     </div>
                 </div>
@@ -60,7 +72,7 @@
             <p>Battle Codemon and score 80% or higher to add them to your collection.</p>
         </div>
         <div class="empty-state__actions">
-            <a href="{% url 'battle-encounter' %}" class="btn btn-primary">Start Battling</a>
+            <a href="{% url 'battle-encounter' %}" class="btn btn-battle">Start Battling</a>
         </div>
     </div>
     {% endif %}
