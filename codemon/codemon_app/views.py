@@ -5,8 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 import random
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import CreateView
-from django.urls import reverse
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse, reverse_lazy
 from .forms import CodemonForm
 
 
@@ -186,3 +186,24 @@ class CodemonCreate(LoginRequiredMixin, CreateView):
     
     def get_success_url(self):
         return reverse('my-collection')
+    
+class CodemonUpdate(LoginRequiredMixin, UpdateView):
+    model = TechCodemon
+    form_class = CodemonForm
+    template_name = 'codemon/codemon_form.html'
+    
+    def get_queryset(self):
+        # Only allow users to update Codemon they created
+        return TechCodemon.objects.filter(created_by=self.request.user)
+    
+    def get_success_url(self):
+        return reverse_lazy('my-collection')
+    
+class CodemonDelete(LoginRequiredMixin, DeleteView):
+    model = TechCodemon
+    template_name = 'codemon/codemon_confirm_delete.html'
+    success_url = reverse_lazy('my-collection')
+    
+    def get_queryset(self):
+        # Only allow users to delete Codemon they created
+        return TechCodemon.objects.filter(created_by=self.request.user)

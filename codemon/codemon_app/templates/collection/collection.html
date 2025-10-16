@@ -27,21 +27,21 @@
                 {% endif %}
             </div>
 
-<header class="collection-card__header">
-    <h2 class="collection-card__name">{{ item.codemon.name }}</h2>
-    <div class="collection-card__badges">
-        <span class="track-badge" style="background-color: {{ item.codemon.tech_track.color }}">
-            {{ item.codemon.tech_track.name }}
-        </span>
-         <div class="codemon-card__meta">
-                {% if item.codemon.created_by %}
-                <span class="creator-badge">Created by {{ item.codemon.created_by.username }}</span>
-                {% else %}
-                <span class="creator-badge">Official Codemon</span>
-                {% endif %}
-            </div>
-    </div>
-</header>
+            <header class="collection-card__header">
+                <h2 class="collection-card__name">{{ item.codemon.name }}</h2>
+                <div class="collection-card__badges">
+                    <span class="track-badge" style="background-color: {{ item.codemon.tech_track.color }}">
+                        {{ item.codemon.tech_track.name }}
+                    </span>
+                    <div class="codemon-card__meta">
+                        {% if item.codemon.created_by %}
+                        <span class="creator-badge">Created by {{ item.codemon.created_by.username }}</span>
+                        {% else %}
+                        <span class="creator-badge">Official Codemon</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </header>
 
             <div class="collection-card__content">
                 <div class="collection-card__skills">
@@ -61,6 +61,12 @@
                     </p>
                 </div>
             </div>
+            {% if item.codemon.created_by == user %}
+            <div class="collection-card__actions">
+                <a href="{% url 'codemon-update' item.codemon.id %}" class="btn btn-small btn-edit">Edit</a>
+                <a href="{% url 'codemon-delete' item.codemon.id %}" class="btn btn-small btn-danger">Delete</a>
+            </div>
+            {% endif %}
         </article>
         {% endfor %}
     </div>
