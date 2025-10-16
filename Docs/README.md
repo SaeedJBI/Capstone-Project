@@ -43,7 +43,7 @@ A mobile-first, gamified learning platform where users master tech concepts by "
 ## 🛠 Technologies
 
 ### Backend
-- **Python** 🐍 + **Django**
+- **Python** + **Django**
 - **PostgreSQL** database
 - **AI Integration** for dynamic quiz generation
 
@@ -96,19 +96,7 @@ A mobile-first, gamified learning platform where users master tech concepts by "
 
 ## 🗃️ Database Schema
 
-![CodeMon ERD Schema](erd-schema.png)
-
-### Core Tables:
-- **users** - User accounts and roll balances
-- **tech_tracks** - Learning categories (Web Dev, Security, etc.)
-- **tech_pokemon** - Collectible Pokemon with skills and difficulty  
-- **user_pokemon_collection** - Captured Pokemon with battle history
-- **user_track_progress** - Tracks user enrollment and progress per track
-
-### Relationships:
-- Users enroll in Tech Tracks (many-to-many via user_track_progress)
-- Pokemon belong to Tech Tracks (one-to-many)
-- Users collect Pokemon (many-to-many via user_pokemon_collection)
+![CodeMon ERD Schema](erd-schema_v2.png)
 
 ## 🚀 Quick Start
 ### Prerequisites
